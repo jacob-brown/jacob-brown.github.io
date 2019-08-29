@@ -6,12 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 
-  <title>Jacob Brown - My website</title>
+  <title>Python</title>
 
   <meta name="author" content="Jacob Brown" />
 
-  
-  <meta name="description" content="biologist and data enthusiast">
   
 
   <link rel="alternate" type="application/rss+xml" title="Jacob Brown - My website" href="http://localhost:4000/feed.xml" />
@@ -73,19 +71,21 @@
   
 
   
-  <meta property="og:title" content="Hi, I'm Jacob" />
+  <meta property="og:title" content="Python" />
   
 
    
-  <meta property="og:description" content="biologist and data enthusiast">
+  <meta property="og:description" content="{% for post in site.categories.Python %}
+ {{ post.date | date_to_string }} &amp;nbsp; {{ post.title }}
+{% endfor %}">
   
 
 
   <meta property="og:type" content="website" />
 
   
-  <meta property="og:url" content="http://localhost:4000/" />
-  <link rel="canonical" href="http://localhost:4000/" />
+  <meta property="og:url" content="http://localhost:4000/python/" />
+  <link rel="canonical" href="http://localhost:4000/python/" />
   
 
   
@@ -99,11 +99,13 @@
   <meta name="twitter:creator" content="@" />
 
   
-  <meta name="twitter:title" content="Hi, I'm Jacob" />
+  <meta name="twitter:title" content="Python" />
   
 
   
-  <meta name="twitter:description" content="biologist and data enthusiast">
+  <meta name="twitter:description" content="{% for post in site.categories.Python %}
+ {{ post.date | date_to_string }} &amp;nbsp; {{ post.title }}
+{% endfor %}">
   
 
   
@@ -157,52 +159,15 @@
 
 
 
-  <div id="header-big-imgs" data-num-img=1
-    
-	  
-	  
-	    
-		  data-img-src-1="/img/trees.jpg"
-		
-	  
-    
-  ></div>
 
-
-<header class="header-section has-img">
-
-<div class="big-img intro-header">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-heading">
-          <h1>Hi, I'm Jacob</h1>
-		  
-		    
-            <hr class="small">
-            <span class="page-subheading">biologist and data enthusiast</span>
-			
-		  
-		  
-		  
-        </div>
-      </div>
-    </div>
-  </div>
-  <span class='img-desc'></span>
-</div>
+<header class="header-section ">
 
 <div class="intro-header no-img">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-heading">
-          <h1>Hi, I'm Jacob</h1>
-		  
-		    
-            <hr class="small">
-            <span class="page-subheading">biologist and data enthusiast</span>
-			
+          <h1>Python</h1>
 		  
 		  
 		  
@@ -220,12 +185,7 @@
 <div class="container" role="main">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <div class="posts-list">
-  
-</div>
-
-
-
+      
 	    
     </div>
   </div>
