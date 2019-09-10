@@ -75,7 +75,7 @@
   
 
    
-  <meta property="og:description" content="{% for post in site.categories.Python %}
+  <meta property="og:description" content="{% for post in site.categories.python %}
  {{ post.date | date_to_string }} &amp;nbsp; {{ post.title }}
 {% endfor %}">
   
@@ -103,7 +103,7 @@
   
 
   
-  <meta name="twitter:description" content="{% for post in site.categories.Python %}
+  <meta name="twitter:description" content="{% for post in site.categories.python %}
  {{ post.date | date_to_string }} &amp;nbsp; {{ post.title }}
 {% endfor %}">
   
@@ -137,7 +137,14 @@
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
           <li><a href="/aboutme">About Me</a></li>
-          <li><a href="/research">Research</a></li></ul>
+          <li><a href="/research">Research</a></li>
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Blog</a>
+            <div class="navlinks-children">
+              <a href="/python">Python</a>
+            </div>
+          </li>
+        </ul>
     </div>
 
 	
@@ -186,6 +193,8 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       
+ <li><span>10 Sep 2019</span> &nbsp; <a href="/2019-09-10-pyinstaller/">PyInstaller - Standalone Python Applications for MacOS, Windows, and Linux</a></li>
+
 	    
     </div>
   </div>

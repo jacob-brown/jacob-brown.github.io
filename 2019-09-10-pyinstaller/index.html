@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>PyInstaller - Standalone Python Applications for MacOS, Windows, and Linux</title>
+
+  <meta name="author" content="Jacob Brown" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Jacob Brown - My website" href="https://jacob-brown.github.io//feed.xml" />
+
+  
+
+  
+
+  
+<!-- Google Analytics -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-146598429-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="PyInstaller - Standalone Python Applications for MacOS, Windows, and Linux" />
+  
+
+   
+  <meta property="og:description" content="We will explore the use of PyInstaller to create a cross-platform standalone application using python. For this tutorial I will be using Tkinter to visually demonstrate. PyInstaller can be used in Python3 and Python2, similarly it creates applications for MacOS, Windows, and Linux. I will be using: Python 3 MacOS...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="https://jacob-brown.github.io//2019-09-10-pyinstaller/" />
+  <link rel="canonical" href="https://jacob-brown.github.io//2019-09-10-pyinstaller/" />
+  
+
+  
+  <meta property="og:image" content="https://jacob-brown.github.io//img/head.jpg" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="PyInstaller - Standalone Python Applications for MacOS, Windows, and Linux" />
+  
+
+  
+  <meta name="twitter:description" content="We will explore the use of PyInstaller to create a cross-platform standalone application using python. For this tutorial I will be using Tkinter to visually demonstrate. PyInstaller can be used in Python3 and Python2, similarly it creates applications for MacOS, Windows, and Linux. I will be using: Python 3 MacOS...">
+  
+
+  
+  <meta name="twitter:image" content="https://jacob-brown.github.io//img/head.jpg" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><a class="navbar-brand" href="https://jacob-brown.github.io/">Jacob Brown</a></div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/aboutme">About Me</a></li>
+          <li><a href="/research">Research</a></li>
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Blog</a>
+            <div class="navlinks-children">
+              <a href="/python">Python</a>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="https://jacob-brown.github.io/">
+	      <img class="avatar-img" src="/img/pyinstaller.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>PyInstaller - Standalone Python Applications for MacOS, Windows, and Linux</h1>
+		  
+		  
+		  
+		  <span class="post-meta">Posted on September 10, 2019</span>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <p>We will explore the use of <code class="highlighter-rouge">PyInstaller</code> to create a cross-platform standalone application using python. For this tutorial I will be using <code class="highlighter-rouge">Tkinter</code> to visually demonstrate.</p>
+
+<p>PyInstaller can be used in <strong>Python3</strong> and <strong>Python2</strong>, similarly it creates applications for MacOS, Windows, and Linux.</p>
+
+<p>I will be using:</p>
+<ul>
+  <li>Python 3</li>
+  <li>MacOS 10.12.6</li>
+  <li>PyInstaller 3.5</li>
+</ul>
+
+<p><strong>N.B.</strong> - Currently Python 3 has issues with importing a compatible version of tcl on MacOS, however the below describes a method that works around this.</p>
+
+<h2 id="setup">Setup</h2>
+<p>PyInstaller runs from within the terminal, from here we will install PyInstaller, create a working directory, and cd to it.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pip install pyinstaller
+$ mkdir DogsGo
+$ cd DogsGo
+</code></pre></div></div>
+<h2 id="write-your-python-script">Write your python script</h2>
+<p>This will vary depending on your task, below I will demonstrate visually by creating a <code class="highlighter-rouge">tkinter</code> app.</p>
+
+<p>If needed: <code class="highlighter-rouge">pip install tkinter</code>.</p>
+
+<p>Save the below <code class="highlighter-rouge">tkinter</code> app as <code class="highlighter-rouge">DogsGo.py</code>.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import tkinter as tk 
+root = tk.Tk()
+root.title("DogsGo...")
+root.geometry('350x200')
+lbl = tk.Label(root, text="Woof?")
+lbl.grid(column=0, row=0)
+tk.mainloop()
+</code></pre></div></div>
+<p>Run the above <code class="highlighter-rouge">$ python DogsGo.py</code> or from within python.</p>
+
+<p>You should have generated an app that shows:</p>
+
+<p><img src="/img/appDogsGo.png" alt="app" height="250" /></p>
+
+<p><strong>N.B.</strong> 
+Python 2 uses <code class="highlighter-rouge">import Tkinter</code> and Python 3 <code class="highlighter-rouge">import tkinter</code>.</p>
+
+<h2 id="build-the-application">Build the application</h2>
+<p>Before we build the application you should first understand flags, these are settings which you apply at the time of building. In many cases these can be applied after, however many are easiest to add at the point of build. For this example I will describe two, however more can be found <a href="https://pyinstaller.readthedocs.io/en/stable/usage.html">here</a>.</p>
+
+<p><strong>-w, –windowed, –noconsole</strong> - Prevents terminal from appearing when app is opened.</p>
+<blockquote>
+  <p>Windows and Mac OS X: do not provide a console window for standard i/o. On Mac OS X this also triggers building an OS X .app bundle. On Windows this option will be set if the first script is a ‘.pyw’ file. This option is ignored in *NIX systems.</p>
+</blockquote>
+
+<p><strong>-F, –onefile</strong> - App is bundled into a single file.</p>
+<blockquote>
+  <p>Create a one-file bundled executable.</p>
+</blockquote>
+
+<p><strong>If you are a MacOS user don’t use –onefile</strong>, I’ll elaborate below.</p>
+
+<h3 id="windows-and-linux">Windows and Linux</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyinstaller --windowed --onefile DogsGo.py
+</code></pre></div></div>
+<p>Once the build is complete, navigate to <code class="highlighter-rouge">dist</code> and run the <code class="highlighter-rouge">DogsGo</code> application. Or:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ open dist/DogsGo.app
+</code></pre></div></div>
+<p>*change extension and path depending on OS.</p>
+
+<h3 id="macos">MacOS</h3>
+
+<p>Currently the pyinstaller build on MacOS uses an incompatible version of tcl, resulting in the app immediately crashing when it opens (i.e. if you follow the above). Below is a method which allows the application to be opened by editing the <code class="highlighter-rouge">init.tcl</code> file. I have written a python script which makes these changes.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyinstaller --windowed  DogsGo.py
+</code></pre></div></div>
+
+<p>The build will be created however the <code class="highlighter-rouge">Contents</code> of the application will remain as separate files. Clone the <code class="highlighter-rouge">TCLChanger.py</code> from my git repository and run in the same working directory as your original python script.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/jacob-brown/TCLChanger.git
+$ python TCLChanger/TCLChanger.py
+</code></pre></div></div>
+<p><em>Or download the file if you don’t use git</em> :’(</p>
+
+<p>You should now be able to open the application.</p>
+
+<h3 id="exploring-spec-and-adding-an-icon">Exploring .spec and adding an icon</h3>
+<p>Adding an application icon can be done using the flag <code class="highlighter-rouge">--icon=icon-name.icns</code> during the build, however we will use this as an oppertunity to delve into the .spec file that has been generated.</p>
+
+<p>Opening <code class="highlighter-rouge">DogsGo.spec</code> will show a number of settings we can update, for the application icon we want to update <code class="highlighter-rouge">exe = EXE(...)</code> and <code class="highlighter-rouge">app = BUNDLE(...)</code>.</p>
+
+<p>Let us update the icon to <a href="https://icon-icons.com/download/15240/ICNS/128/">dog.icns</a>, don’t forget to rename it <code class="highlighter-rouge">dog.icns</code> and copy it to your current directory.</p>
+
+<p><strong>exe = EXE(…)</strong></p>
+
+<p>Add <code class="highlighter-rouge">icon='dog.icns'</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exe = EXE(pyz,
+          a.scripts,
+          [],
+          exclude_binaries=True,
+          name='DogsGo',
+          debug=False,
+          bootloader_ignore_signals=False,
+          strip=False,
+          upx=True,
+          console=False , 
+          icon='dog.icns') 
+</code></pre></div></div>
+
+<p><strong>app = BUNDLE()</strong></p>
+
+<p>Change <code class="highlighter-rouge">icon=None</code> to <code class="highlighter-rouge">icon='dog.icns'</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app = BUNDLE(coll,
+             name='DogsGo.app',
+             icon='dog.icns', 
+             bundle_identifier=None)
+</code></pre></div></div>
+
+<p>Now that <code class="highlighter-rouge">DogsGo.spec</code> has been updated, run the pyinstaller for the <code class="highlighter-rouge">DogsGo.spec</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyinstaller DogsGo.spec
+</code></pre></div></div>
+
+<p><em>MacOS users, remember to run</em> <code class="highlighter-rouge">$ python TCLChanger.py</code> <em>again</em></p>
+
+<h2 id="final-note">Final Note</h2>
+<p>That’s it! You will now be able to transfer the standalone application and use it.</p>
+
+<p><img src="/img/DogsGo.png" alt="dog" height="200" /></p>
+
+<blockquote>
+  <p>woof.</p>
+</blockquote>
+
+<h2 id="helpful-links">Helpful links</h2>
+<ul>
+  <li>Pyinstaller Manual: <a href="https://pyinstaller.readthedocs.io/en/stable/index.html">https://pyinstaller.readthedocs.io/en/stable/index.html</a></li>
+  <li>TKDocsL: <a href="https://tkdocs.com/index.html">https://tkdocs.com/index.html</a></li>
+  <li>PyInstaller repository: <a href="https://github.com/pyinstaller/pyinstaller">https://github.com/pyinstaller/pyinstaller</a></li>
+  <li>TCLChanger Repository: <a href="https://github.com/jacob-brown/TCLChanger">https://github.com/jacob-brown/TCLChanger</a></li>
+</ul>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#python">python</a>
+          
+            <a href="/tags#app">app</a>
+          
+            <a href="/tags#development">development</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+  <!--- Share on Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=PyInstaller+-+Standalone+Python+Applications+for+MacOS%2C+Windows%2C+and+Linux+https://jacob-brown.github.io//2019-09-10-pyinstaller/"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+  <!--- Share on Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://jacob-brown.github.io//2019-09-10-pyinstaller/"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook-f" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+
+  
+  <!--- Share on LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://jacob-brown.github.io//2019-09-10-pyinstaller/"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin-in" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pager blog-pager">
+        
+        
+      </ul>
+
+      
+        <div class="disqus-comments">
+          
+        </div>
+          
+        <div class="staticman-comments">
+          
+
+        </div>
+        <div class="justcomments-comments">
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="mailto:jacob.42.brown@gmail.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li><li><a href="https://github.com/jacob-brown" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://www.researchgate.net/profile/Jacob_Brown37" title="ResearchGate"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-researchgate fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">ResearchGate</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      Jacob Brown
+      &nbsp;&bull;&nbsp;
+      2019
+
+      
+      &nbsp;&bull;&nbsp;
+      <a href="https://jacob-brown.github.io/">https://jacob-brown.github.io/</a>
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+          document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>
