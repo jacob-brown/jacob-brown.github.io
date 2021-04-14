@@ -12,7 +12,7 @@
 
   
 
-  <link rel="alternate" type="application/rss+xml" title="Jacob Brown - My website" href="http://localhost:4000/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Jacob Brown - My website" href="https://jacob-brown.github.io//feed.xml" />
 
   
 
@@ -37,7 +37,7 @@
   
     
       
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" />
 
 
     
@@ -75,7 +75,7 @@
   
 
    
-  <meta property="og:description" content="{% for post in site.categories.Python %}
+  <meta property="og:description" content="{% for post in site.categories.python %}
  {{ post.date | date_to_string }} &amp;nbsp; {{ post.title }}
 {% endfor %}">
   
@@ -84,12 +84,12 @@
   <meta property="og:type" content="website" />
 
   
-  <meta property="og:url" content="http://localhost:4000/python/" />
-  <link rel="canonical" href="http://localhost:4000/python/" />
+  <meta property="og:url" content="https://jacob-brown.github.io//python/" />
+  <link rel="canonical" href="https://jacob-brown.github.io//python/" />
   
 
   
-  <meta property="og:image" content="http://localhost:4000/img/head.jpg" />
+  <meta property="og:image" content="https://jacob-brown.github.io//img/head.jpg" />
   
 
 
@@ -103,13 +103,13 @@
   
 
   
-  <meta name="twitter:description" content="{% for post in site.categories.Python %}
+  <meta name="twitter:description" content="{% for post in site.categories.python %}
  {{ post.date | date_to_string }} &amp;nbsp; {{ post.title }}
 {% endfor %}">
   
 
   
-  <meta name="twitter:image" content="http://localhost:4000/img/head.jpg" />
+  <meta name="twitter:image" content="https://jacob-brown.github.io//img/head.jpg" />
   
 
   
@@ -132,18 +132,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button><a class="navbar-brand" href="http://localhost:4000/">Jacob Brown</a></div>
+      </button><a class="navbar-brand" href="https://jacob-brown.github.io/">Jacob Brown</a></div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
           <li><a href="/aboutme">About Me</a></li>
-          <li><a href="/research">Research</a></li></ul>
+          <li><a href="/research">Research</a></li>
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Blog</a>
+            <div class="navlinks-children">
+              <a href="/python">Python</a>
+            </div>
+          </li>
+        </ul>
     </div>
 
 	
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
-	    <a href="http://localhost:4000/">
+	    <a href="https://jacob-brown.github.io/">
 	      <img class="avatar-img" src="/img/head.jpg" />
 		</a>
 	  </div>
@@ -186,6 +193,8 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       
+ <li><span>10 Sep 2019</span> &nbsp; <a href="/2019-09-10-pyinstaller/">PyInstaller - Standalone Python Applications for MacOS, Windows, and Linux</a></li>
+
 	    
     </div>
   </div>
@@ -197,26 +206,32 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <ul class="list-inline text-center footer-links"><li><a href="mailto:jacob.42.brown@gmail.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
                 </span>
                 <span class="sr-only">Email me</span>
               </a>
             </li><li><a href="https://github.com/jacob-brown" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                 </span>
                 <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://www.researchgate.net/profile/Jacob_Brown37" title="ResearchGate"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-researchgate fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">ResearchGate</span>
               </a>
             </li></ul>
       <p class="copyright text-muted">
       Jacob Brown
       &nbsp;&bull;&nbsp;
-      2019
+      2020
 
       
       &nbsp;&bull;&nbsp;
-      <a href="http://localhost:4000/">jacobbrown</a>
+      <a href="https://jacob-brown.github.io/">https://jacob-brown.github.io/</a>
       
 
       
@@ -224,7 +239,7 @@
           <!-- Please don't remove this, keep my open source work credited :) -->
     <p class="theme-by text-muted">
       Theme by
-      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+      <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
     </p>
       </div>
     </div>
