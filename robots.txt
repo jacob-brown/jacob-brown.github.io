@@ -1,1 +1,2 @@
-Sitemap: https://jacob-brown.github.io//sitemap.xml
+User-agent: *
+Disallow:
